@@ -1,23 +1,29 @@
-function calculateDiscount() {
-    // جلب القيم من المدخلات
-    const price = parseFloat(document.getElementById('price').value);
-    const discount = parseFloat(document.getElementById('discount').value);
-    const resultBox = document.getElementById('resultBox');
+document.addEventListener('DOMContentLoaded', function() {
+    const calcBtn = document.getElementById('calculateBtn');
+    
+    calcBtn.addEventListener('click', function() {
+        // جلب المدخلات
+        const price = parseFloat(document.getElementById('price').value);
+        const discount = parseFloat(document.getElementById('discount').value);
+        
+        // جلب عناصر العرض
+        const resultBox = document.getElementById('resultBox');
+        const savedAmountText = document.getElementById('savedAmount');
+        const finalPriceText = document.getElementById('finalPrice');
 
-    // التأكد من أن المستخدم أدخل أرقاماً صحيحة
-    if (isNaN(price) || isNaN(discount)) {
-        alert("من فضلك أدخل أرقاماً صحيحة");
-        return;
-    }
+        // التأكد من صحة الأرقام
+        if (price > 0 && discount >= 0) {
+            const saved = (price * discount) / 100;
+            const final = price - saved;
 
-    // معادلة الخصم
-    const savedAmount = (price * discount) / 100;
-    const finalPrice = price - savedAmount;
+            // تحديث الواجهة
+            savedAmountText.textContent = saved.toLocaleString() + " ج.م";
+            finalPriceText.textContent = final.toLocaleString() + " ج.م";
 
-    // عرض النتائج في الصفحة وتنسيق الأرقام لتكون سهلة القراءة
-    document.getElementById('savedAmount').innerText = savedAmount.toLocaleString() + " جنيه";
-    document.getElementById('finalPrice').innerText = finalPrice.toLocaleString() + " جنيه";
-
-    // إظهار صندوق النتائج بحركة بسيطة
-    resultBox.style.display = "block";
-}
+            // إظهار النتائج
+            resultBox.style.display = 'block';
+        } else {
+            alert("من فضلك أدخل مبالغ صحيحة");
+        }
+    });
+});
