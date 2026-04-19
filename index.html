@@ -3,36 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حاسبة الخصومات الاحترافية</title>
+    <title>حاسبة الخصم الاحترافية</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="calculator-card">
-        <h2><span class="icon">💸</span> حاسبة الخصم الذكية</h2>
+        <h2><span class="icon">💰</span> حاسبة الخصم</h2>
         
         <div class="input-group">
-            <label>سعر الجهاز (جنيه)</label>
-            <input type="number" id="price" placeholder="مثلاً: 17000" step="any">
+            <label for="price">السعر الأصلي (جنيه)</label>
+            <input type="number" id="price" placeholder="أدخل المبلغ هنا" required>
         </div>
 
         <div class="input-group">
-            <label>نسبة الخصم (%)</label>
-            <input type="number" id="discount" placeholder="مثلاً: 25" step="any">
+            <label for="discount">نسبة الخصم (%)</label>
+            <input type="number" id="discount" placeholder="مثلاً 25" required>
         </div>
 
-        <button onclick="calculateDiscount()">احسب السعر النهائي</button>
+        <button id="calculateBtn">احسب الآن</button>
 
         <div class="results" id="resultBox">
-            <div class="result-item">
-                <span>قيمة الخصم:</span>
-                <span id="savedAmount">0 جنيه</span>
+            <div class="result-line">
+                <span>وفرت مبلغ:</span>
+                <strong id="savedAmount">0</strong>
             </div>
-            <hr>
-            <div class="result-item total">
-                <span>السعر بعد الخصم:</span>
-                <span id="finalPrice">0 جنيه</span>
+            <div class="result-line total">
+                <span>السعر النهائي:</span>
+                <strong id="finalPrice">0</strong>
             </div>
         </div>
     </div>
